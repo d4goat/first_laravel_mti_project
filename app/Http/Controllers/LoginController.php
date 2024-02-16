@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
 class LoginController extends Controller
 {
     public function check(Request $request){
@@ -40,5 +41,7 @@ class LoginController extends Controller
                 'token'   => $token   
             ], 200);
         }
+    }
+    
 }
-}
+

@@ -28,7 +28,8 @@ class RegisterController extends Controller
         $user = User::create([
             'name'      => $input['name'],
             'email'     => $input['email'],
-            'password'  => bcrypt($input['password'])
+            'password'  => bcrypt($input['password']),
+            'role_id' => '2'
         ]);
 
         //return response JSON user is created
@@ -44,4 +45,5 @@ class RegisterController extends Controller
             'success' => false,
         ], 409);
     }
+
 }
