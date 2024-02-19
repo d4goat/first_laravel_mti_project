@@ -22,8 +22,4 @@ class DeleteController extends Controller
         }
     }
 
-    public function updateUser($id){
-        $usr = User::find($id);
-        return response()->json($usr);
-    }
 }

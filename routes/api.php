@@ -27,4 +27,5 @@ Route::post('/login', [LoginController::class, 'check']);
 Route::post('/log', App\Http\Controllers\LogoutController::class)->name('logout');
 Route::get('/show', [ShowController::class, 'show']);
 Route::delete('delete/{id}', [DeleteController::class, 'deleteUser']);
-Route::get('update/{id}', [DeleteController::class, 'updateUser']);
+Route::get('get/{id}', [RegisterController::class, 'getUser']);
+Route::post('update/{id}', [RegisterController::class, 'updateUser']);

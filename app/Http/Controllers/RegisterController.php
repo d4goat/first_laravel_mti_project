@@ -46,4 +46,22 @@ class RegisterController extends Controller
         ], 409);
     }
 
+    public function getUser($id){
+        $use = User::find($id);
+        return response()->json($use);
+    }
+    public function updateUser($id,  Request $request){
+        $usr = User::where('id',$id)->first();
+        $usr->name = $request->name;
+        $usr->email = $request->email;
+        $usr->save();
+        //return response JSON user is created
+        return response()->json([
+            'success' => true,
+            'user'    => $usr,
+            'status' => 200,
+            'message' => 'Successfully Edit Data' 
+        ], 200);
+    }
+
 }
