@@ -10,10 +10,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Traits\Uuid;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Uuid;
 
     /**
      * The attributes that are mass assignable.
@@ -48,16 +49,6 @@ class User extends Authenticatable implements JWTSubject
 
     public function role(){
         return $this->belongsTo(Role::class, 'role_id');
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = Str::uuid()->toString();
-            }
-        });
     }
 
     /**
